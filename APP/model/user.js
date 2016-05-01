@@ -4,7 +4,11 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
     email : String,
     password : String,
-    name : String
+    name : String,
+    friend : [{
+        type: Schema.ObjectId,
+        ref: 'user'
+    }]
 });
 
 // the schema is useless so far

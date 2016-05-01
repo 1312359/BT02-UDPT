@@ -32,18 +32,27 @@ app.use(eS({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+function Ensureauthencated(req,res,next) {
+    if(req.isAuthenticated()){
+        next();
+    }else{
+        res.redirect('/login');
+    }
+};
 passport.use(new Strategy(function(username,password,done){
-   //  done(null,user);
-   // done(null,null);
-   // done(new Error('ouch!'));
+    //  done(null,user);
+    // done(null,null);
+    // done(new Error('ouch!'));
     //if(username === password){
-      //  done(null,{id:username,name:username});
-   // }else{
+    //  done(null,{id:username,name:username});
+    // }else{
     //    done(null,null);
-   // }
+    // }
     user.findOne( {email : username, password : password },     function(err, User){
 
-       //console.log(user);
+        //console.log(user);
         //console.log(user.password);
         if (err) { return done(err); }
         if ( User != null && User.length == 0) { return done(null, false); }
@@ -52,20 +61,21 @@ passport.use(new Strategy(function(username,password,done){
     });
 }));
 passport.serializeUser(function(user,done){
-done(null,user);
+    done(null,user);
 });
 
 passport.deserializeUser(function(user,done){
     done(null,user);
 });
+
 //app.get('/',function(req,res){
-   // res.render('index',{
-   //     isAuthenticated:false,
-        //user:req.user
-   // });
+// res.render('index',{
+//     isAuthenticated:false,
+//user:req.user
+// });
 //});
 //app.get('/login',function(req,res){
-  ///  res.render('login');
+///  res.render('login');
 //});
 var routes = require('./routes/index');
 app.use('/', routes);
@@ -75,7 +85,7 @@ var login = require('./routes/login');
 app.get('/login',login);
 
 app.post('/login',passport.authenticate('local'),function(req,res){
-   res.redirect('/');
+    res.redirect('/');
 });
 
 app.get('/logout',function(req,res){
@@ -93,4 +103,6 @@ var register = require('./routes/register')
 app.get('/register',register);
 app.post('/register',register);
 
-
+var friend = require('./routes/friend');
+app.get('/friend',Ensureauthencated, friend);
+app.post('/friend',friend);

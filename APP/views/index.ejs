@@ -13,12 +13,19 @@
 </head>
 <body>
 <% if(!isAuthenticated){ %>
-<a href = "/login">Login Here!</a>
+<center>
+<h1>Welcome to Web Chat 359-340</h1>
+<a class="btn btn-success" href="/login">Login here</a>
+<a class="btn btn-success" href="/register">Register here</a>
+    </center>
 <br>
-<a href = "/register">Register Here!</a>
 <% } else { %>
-Hello,<%= user.name%>!
-<a href = '/logout'>log out here!</a>
+<div class = "col-xs-4 ">
+    <h3>Hello, <%=user.name%> </h3>
+    <a class="btn btn-primary" href="/logout">Log out</a><br><br><br>
+    <a class="btn btn-success" href="/friend">Add new friend</a><br><br>
+    <a class="btn btn-success" href="/mail">write new mail</a>
+</div>
 <% } %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

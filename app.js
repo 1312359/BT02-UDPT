@@ -9,7 +9,7 @@ var cookieParser = require('cookie-parser');
 var eS = require('express-session');
 var user = require('./model/user');
 
-app.listen(3000, function () {
+app.listen('webappchat340359.herokuapp.com', function () {
     mongoose.connect('mongodb://admin:123456@ds013192.mlab.com:13192/minhserver');
     console.log('now listening on http://localhost:3000');
 

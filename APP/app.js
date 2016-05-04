@@ -106,3 +106,10 @@ app.post('/register',register);
 var friend = require('./routes/friend');
 app.get('/friend',Ensureauthencated, friend);
 app.post('/friend',friend);
+
+var mail = require('./routes/mail');
+app.get('/mail',mail);
+app.post('/mail',mail);
+
+var sent = require('./routes/sentmail')
+app.get('/sentmail',sent);

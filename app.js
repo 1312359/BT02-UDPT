@@ -10,7 +10,7 @@ var eS = require('express-session');
 var user = require('./model/user');
 
 app.listen(3000, function () {
-    mongoose.connect('mongodb://localhost/Users');
+    mongoose.connect('mongodb://admin:123456@ds013192.mlab.com:13192/minhserver');
     console.log('now listening on http://localhost:3000');
 
 })

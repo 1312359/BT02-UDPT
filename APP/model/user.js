@@ -8,7 +8,15 @@ var userSchema = new Schema({
     friend : [{
         type: Schema.ObjectId,
         ref: 'user'
-    }]
+    }],
+    Msent:[{
+        type: Schema.ObjectId,
+        ref: 'mails'
+    }],
+    Mreceive:[{
+        type: Schema.ObjectId,
+        ref: 'mails'
+    }],
 });
 
 // the schema is useless so far

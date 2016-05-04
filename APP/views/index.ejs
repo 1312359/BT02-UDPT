@@ -8,23 +8,36 @@
             padding-top: 70px;
             padding-bottom: 70px;
         }
+        ul{height:200px; width:100%;}
+        ul{overflow:hidden; overflow-y:scroll;}
     </style>
+
 
 </head>
 <body>
 <% if(!isAuthenticated){ %>
 <center>
-<h1>Welcome to Web Chat 359-340</h1>
-<a class="btn btn-success" href="/login">Login here</a>
-<a class="btn btn-success" href="/register">Register here</a>
-    </center>
+    <h1>Welcome to Web Chat 359-340</h1>
+    <a class="btn btn-success" href="/login">Login here</a>
+    <a class="btn btn-success" href="/register">Register here</a>
+</center>
 <br>
 <% } else { %>
 <div class = "col-xs-4 ">
     <h3>Hello, <%=user.name%> </h3>
     <a class="btn btn-primary" href="/logout">Log out</a><br><br><br>
     <a class="btn btn-success" href="/friend">Add new friend</a><br><br>
-    <a class="btn btn-success" href="/mail">write new mail</a>
+    <a class="btn btn-success" href="/mail">write new mail</a><br><br>
+    <a class="btn btn-success" href="/sentmail">Mail sent</a>
+
+    <br>
+    <br>
+    <h2>InBox Mail</h2><br>
+    <ul  >
+        <% for(var i = 0;i < mailList.length; i++) {%>
+        <li class="list-group-item list-group-item-info"> <a href="/mailinfo" class="list-group-item"> Name: <%=mailList[i].name%> By <%=mailList[i].sender%></a> message : <textarea  class="form-control"  rows="4" ><%=mailList[i].message%></textarea></li>
+        <%}%>
+    </ul>
 </div>
 <% } %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

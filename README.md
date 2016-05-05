@@ -4,7 +4,7 @@ Web chat 359-340 là trang web cho phép người dùng gửi tin nhắn. Thời
 
 Danh sách sinh viên: 1312340-Lê Quốc Tấn Lộc   1312359-Đào Chí Minh
 
-URL: **Insert your Heroku URL here**
+URL: http://webchatapp359340.herokuapp.com/
 
 ## Chức năng
 
